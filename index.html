@@ -335,58 +335,20 @@
     <!-- Tamu undangan -->
   <section id="tamu">
       <div class="w-full py-10">
-        <div class="w-full font-great text-white lg:text-5xl text-center text-4xl mb-10 font-semibold">
-          <img src="img/rose.png" alt="" class="w-32 mx-auto">
-          <h1>Kirim Ucapan</h1>
+        <div class="w-full mt-2" data-aos="zoom-in-up" data-aos-duration="1000">
+          <img src="img/padi.png" alt="" class="w-20 mx-auto mt-5" />
+          <h1 class="font-great text-4xl lg:text-6xl text-center mt-4 text-white">
+            Kirim Ucapan
+          </h1>
         </div>
-        <div class="container mx-auto border py-5 rounded-md bg-gray-300">
-          <!-- Skors -->
-          <div class="w-full">
-            
-          <div class="lg:w-[80%] w-[100%] mx-auto flex justify-around text-white p-4 font-semibold">
-            <div class="lg:w-[20%] w-[30%] h-[30%] bg-green-700 border p-2 text-center rounded-md">
-              <span id="hadir" class="font-serif"></span>
-              <span class="block text-sm lg:text-base">Hadir</span>
-            </div>
-            <div class="lg:w-[20%] w-[30%] h-[30%] bg-red-700 border p-2 text-center rounded-md">
-              <span id="tidak-hadir" class="font-serif"></span>
-              <span class="block text-sm lg:text-base">Tidak Hadir</span>
-            </div>
-            <div class="lg:w-[20%] w-[30%] h-[30%] bg-blue-700 border p-2 text-center rounded-md">
-              <span id="ragu-ragu" class="font-serif"></span>
-              <span class="block text-sm lg:text-base">Ragu-ragu</span>
-            </div>
-          </div>
+        <div
+          class="w-80 mx-auto lg:w-11/12 mt-10"
+          data-aos="zoom-in-up"
+          data-aos-duration="1000"
+        >
+        <script async src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
+        <hyvor-talk-comments website-id="10488" page-id=""></hyvor-talk-comments>
         </div>
-        <!-- Input Nama -->
-        <div class="w-full p-5 font-serif">
-          <!-- nama -->
-          <div class="mb-4">
-            <textarea placeholder="Nama" class="rounded-md p-1 w-full h-10 border border-gray-300" id="name" name="nama"></textarea>
-           </textarea>
-          </div>
-          <!-- Ucapan -->
-          <div class="mb-4">
-            <textarea placeholder="Ucapan" class="rounded-md p-1 w-full h-20 border border-gray-300" id="ucapan" name="ucapan"></textarea>
-          </div>
-
-          <div class="mb-4">
-            <select id="kehadiran" name="kehadiran" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
-              <option value="hadir">Hadir</option>
-              <option value="tidak-hadir">Tidak Hadir</option>
-              <option value="ragu-ragu">Masih Ragu</option>
-          </select>
-          </div>
-
-          <div class="text-white">
-            <button id="btn-tamu" class="border font-semibold py-1 px-5 rounded-md bg-color1">Kirim</button>
-          </div>
-        </div>
-
-        <div class="w-[95%] mx-auto border h-[150px] font-semibold p-5 rounded-md text-sm font-serif bg-white overflow-auto" id="Displaydata" style="display: none;">
-
-        </div>
-      </div>
     </div>
   </section>
 
@@ -450,7 +412,7 @@
 
     <!-- Audio -->
     <div>
-    <audio id="lagu" autoplay loop>
+    <audio id="lagu" loop>
       <source src="audio/seribu_bidadari.mp3">
     </audio>
 
@@ -459,114 +421,6 @@
     <!-- End Audio -->
 
     <script>
-
-      // Get data
-      function addGreeting() {
-            var name = document.querySelector('#name').value;
-            var ucapan = document.querySelector('#ucapan').value;
-
-            if (name && ucapan) {
-                var listItem = document.createElement('p');
-                const Dis =  document.querySelector('#Displaydata');
-                Dis.style.display = 'block';
-                listItem.textContent = name + ' : ' + ucapan;
-                document.querySelector('#Displaydata').appendChild(listItem);
-                // Simpan data ke local storage
-                saveToLocalStorage(name, ucapan);
-
-                // Bersihkan input fields
-                document.querySelector('#name').value = '';
-                document.querySelector('#ucapan').value = '';
-            } else {
-                alert('Please provide both name and greeting.');
-            }
-        }
-
-        function saveToLocalStorage(name, ucapan) {
-            // Ambil data yang sudah ada di local storage
-            var greetingsData = JSON.parse(localStorage.getItem('greetingsData') || '[]');
-
-            // Tambahkan data ke array
-            greetingsData.push({ name: name, ucapan: ucapan });
-
-            // Simpan array ke local storage
-            localStorage.setItem('greetingsData', JSON.stringify(greetingsData));
-        }
-
-        window.onload = function() {
-            // Tampilkan data yang sudah ada di local storage saat halaman dimuat
-            displayGreetings();
-        };
-
-        function displayGreetings() {
-            var displayDiv = document.querySelector('#Displaydata');
-            // displayDiv.style.display = 'block';
-            displayDiv.innerHTML = '';
-
-            // Ambil data dari local storage
-            var greetingsData = JSON.parse(localStorage.getItem('greetingsData') || '[]');
-
-            // Tampilkan data di halaman
-            greetingsData.forEach(function(data) {
-                var paragraph = document.createElement('p');
-                paragraph.style.marginBottom = '15px';
-                paragraph.textContent = data.name + ' : ' + data.ucapan;
-                displayDiv.appendChild(paragraph);
-                displayDiv.style.display = 'block';
-            });
-        }
-
-
-
-
-      
-
-        const kehadiranSelect = document.querySelector('#kehadiran');
-        const konfirmasiBtn = document.querySelector('#btn-tamu');
-
-        const hadirCountSpan = document.querySelector('#hadir');
-        const tidakHadirCountSpan = document.querySelector('#tidak-hadir');
-        const masihRaguCountSpan = document.querySelector('#ragu-ragu');
-
-        let hadirCount = parseInt(localStorage.getItem('hadir')) || 0;
-        let tidakHadirCount = parseInt(localStorage.getItem('tidak-hadir')) || 0;
-        let masihRaguCount = parseInt(localStorage.getItem('ragu-ragu')) || 0;
-
-        // Update the display with the loaded counts
-        hadirCountSpan.textContent = hadirCount;
-        tidakHadirCountSpan.textContent = tidakHadirCount;
-        masihRaguCountSpan.textContent = masihRaguCount;
-
-        konfirmasiBtn.addEventListener('click', () => {
-            const selectedOption = kehadiranSelect.value;
-            switch (selectedOption) {
-                case 'hadir':
-                    hadirCount++;
-                    hadirCountSpan.textContent = hadirCount;
-                    localStorage.setItem('hadir', hadirCount);
-                    break;
-                case 'tidak-hadir':
-                    tidakHadirCount++;
-                    tidakHadirCountSpan.textContent = tidakHadirCount;
-                    localStorage.setItem('tidak-hadir', tidakHadirCount);
-                    break;
-                case 'ragu-ragu':
-                    masihRaguCount++;
-                    masihRaguCountSpan.textContent = masihRaguCount;
-                    localStorage.setItem('ragu-ragu', masihRaguCount);
-                    break;
-                default:
-                    break;
-            }
-
-
-            addGreeting();
-        });
-
-      
-
-
-
       // Coutdown
       simplyCountdown('#simply-countdown',{
         year: 2024, // required
