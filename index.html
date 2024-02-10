@@ -264,8 +264,8 @@
         <div class="container mx-auto">
           <div class="w-full">
             <!-- Rg Weda -->
-            <div class="w-24 mx-auto mb-7">
-              <img src="img/om2.png\" alt="" width="" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="w-20 mx-auto mb-7">
+              <img src="img/om2.png" alt="" width="" data-aos="zoom-in" data-aos-duration="1000">
               <h1></h1>
             </div>
             <!-- Tulisan -->
@@ -334,15 +334,15 @@
 
     <!-- Tamu undangan -->
   <section id="tamu">
-      <div class="w-full py-10 bg-white">
+      <div class="w-full py-10">
         <div class="w-full mt-2" data-aos="zoom-in-up" data-aos-duration="1000">
           <img src="img/leaf.png" alt="" class="w-20 mx-auto mt-5" />
-          <h1 class="font-great text-4xl lg:text-6xl text-center mt-4">
+          <h1 class="font-great text-4xl lg:text-6xl text-center mt-4 text-white">
             Kirim Ucapan
           </h1>
         </div>
         <div
-          class="w-80 mx-auto lg:w-11/12 mt-10"
+          class="w-80 mx-auto lg:w-11/12 mt-10 bg-white p-10 rounded-md"
           data-aos="zoom-in-up"
           data-aos-duration="1000"
         >
@@ -354,23 +354,8 @@
 
   <!-- Footer -->
   <section id="footer">
-    <div class="w-full lg:py-10 py-10 font-serif text-white text-center bg-color2 relative">
-    <h1 class="">@ Copyright 2024</h1>
-    <h1 class="mb-5">juwamardott.undangan-online.com</h1>
-      <div class="flex justify-center lg:w-[30%] w-[70%] mx-auto text-sm ">
-        <div class="w-[30%]">
-          <a href="https://wa.me/6285847968314">
-          <img src="img/whatsapp1.png" alt="" class="mx-auto mb-2 lg:w-11 w-9">
-          </a>
-          <p>Whatsapp</p>
-        </div>
-        <div class="w-[30%]">
-          <a href="https://www.instagram.com/juwamardott/">
-          <img src="img/instagram.png" alt="" class="mx-auto mb-2  lg:w-11 w-9">
-          </a>
-          <p>Instagram</p>
-        </div>
-      </div>
+    <div class="w-full lg:py-10 py-4 font-serif text-white text-center bg-color2 relative">
+      <h1>@ 2024 juwamardott | All Rights Reserved</h1>
     </div>
   </section>
 
@@ -436,6 +421,19 @@
                 seconds: { singular: 'Detik', plural: 'Detik' }
             },
     });
+
+
+    window.addEventListener('scroll', function(){
+      const footer = document.querySelector('#footer');
+
+      if (window.scrollY + window.innerHeight >= footer.offsetTop) {
+          navbar.style.display = 'none';
+            } else {
+              navbar.style.display = 'flex';
+            }
+
+    })
+
 
 
     const rootElement = document.documentElement;
