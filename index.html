@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css"/>
     <script src="countdown/simplyCountdown.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script async src="https://talk.hyvor.com/embed/embed.js" type="module"></script>
   </head>
   <body class="bg-black">
     <!-- Header -->
@@ -585,10 +584,9 @@
           data-aos-duration="1000"
         >
         <!-- Komentar -->
-        <hyvor-talk-comments
-        website-id="11949"
-        page-id=""
-    ></hyvor-talk-comments>
+        <script type="text/javascript" src="https://talk.hyvor.com/embed.js" async></script>
+        <link rel="stylesheet" href="https://talk.hyvor.com/embed.css" />
+        <div id="hyvor-talk-view" data-id="11949"></div>
 
 
         <!-- Daftar Komentar -->
@@ -598,7 +596,7 @@
          <!-- End -->
 
          <!-- Hyvor -->
-         <div id="disqus_thread"></div>
+         <!-- <div id="disqus_thread"></div> -->
     </div>
   </section>
 
